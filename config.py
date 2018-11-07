@@ -103,8 +103,8 @@ DB_CONFIG = {
 
     'DB_CONNECT_TYPE': 'sqlalchemy',  # 'pymongo'sqlalchemy;redis
     # 'DB_CONNECT_STRING':'mongodb://localhost:27017/'
-    'DB_CONNECT_STRING': 'sqlite:///' + os.path.dirname(__file__) + '/data/proxy.db'
-    # DB_CONNECT_STRING : 'mysql+mysqldb://root:root@localhost/proxy?charset=utf8'
+    # 'DB_CONNECT_STRING': 'sqlite:///' + os.path.dirname(__file__) + '/data/proxy.db'
+    'DB_CONNECT_STRING' : 'mysql+pymysql://root:root@127.0.0.1/proxy?charset=utf8'
 
     # 'DB_CONNECT_TYPE': 'redis',  # 'pymongo'sqlalchemy;redis
     # 'DB_CONNECT_STRING': 'redis://localhost:6379/8',
@@ -123,7 +123,7 @@ API_PORT = 8000
 不需要检测ip是否已经存在，因为会定时清理
 '''
 UPDATE_TIME = 30 * 60  # 每半个小时检测一次是否有代理ip失效
-MINNUM = 50  # 当有效的ip值小于一个时 需要启动爬虫进行爬取
+MINNUM = 1000  # 当有效的ip值小于一个时 需要启动爬虫进行爬取
 
 TIMEOUT = 5  # socket延时
 '''

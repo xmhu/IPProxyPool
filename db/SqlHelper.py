@@ -6,6 +6,7 @@ from sqlalchemy.orm import sessionmaker
 from config import DB_CONFIG, DEFAULT_SCORE
 
 from db.ISqlHelper import ISqlHelper
+from sqlalchemy.sql.expression import func
 
 '''
 sql操作的基类
@@ -122,7 +123,7 @@ class SqlHelper(ISqlHelper):
         if len(conditions) > 0 and count:
             for condition in conditions:
                 query = query.filter(condition)
-            return query.order_by(Proxy.score.desc(), Proxy.speed).limit(count).all()
+            return query.order_by(func.rand()).limit(count).all()
         elif count:
             return query.order_by(Proxy.score.desc(), Proxy.speed).limit(count).all()
         elif len(conditions) > 0:
